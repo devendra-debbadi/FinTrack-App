@@ -13,7 +13,7 @@ database.default.password = ${database_default_password:-fintrack_pass}
 database.default.DBDriver = ${database_default_DBDriver:-MySQLi}
 database.default.port = ${database_default_port:-3306}
 
-jwt.secretKey = ${jwt_secretKey:-FinTrack_S3cur3_JWT_K3y_2026_Ch4ng3_Th1s_1n_Pr0d}
+jwt.secretKey = ${jwt_secretKey:-CHANGE_ME_GENERATE_WITH_OPENSSL_RAND_HEX_32}
 cors.allowedOrigins = ${cors_allowedOrigins:-http://localhost}
 EOF
 

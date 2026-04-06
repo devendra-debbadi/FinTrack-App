@@ -302,7 +302,7 @@ MYSQL_ROOT_PASSWORD=fintrack_root
 MYSQL_DATABASE=fintrack_app
 MYSQL_USER=fintrack
 MYSQL_PASSWORD=fintrack_pass
-JWT_SECRET=FinTrack_S3cur3_JWT_K3y_2026_Ch4ng3_Th1s_1n_Pr0d
+JWT_SECRET=your-secret-here  # generate: openssl rand -hex 32
 CORS_ALLOWED_ORIGINS=http://localhost
 ```
 

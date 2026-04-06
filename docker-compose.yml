@@ -35,7 +35,7 @@ services:
       database_default_password: ${MYSQL_PASSWORD:-fintrack_pass}
       database_default_DBDriver: MySQLi
       database_default_port: 3306
-      jwt_secretKey: ${JWT_SECRET:-FinTrack_S3cur3_JWT_K3y_2026_Ch4ng3_Th1s_1n_Pr0d}
+      jwt_secretKey: ${JWT_SECRET:-CHANGE_ME_GENERATE_WITH_OPENSSL_RAND_HEX_32}
       cors_allowedOrigins: ${CORS_ALLOWED_ORIGINS:-http://localhost}
     ports:
       - "8081:80"
