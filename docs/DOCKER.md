@@ -319,7 +319,7 @@ openssl rand -hex 32
 Paste the output into your root `.env`:
 
 ```env
-JWT_SECRET=REDACTED_JWT_SECRET
+JWT_SECRET=<paste-your-generated-value-here>
 ```
 
 > **Why this matters:** The JWT secret signs authentication tokens. If someone knows your secret, they can forge tokens and bypass login entirely. The placeholder is intentionally obvious — replace it before going live.
