@@ -1,0 +1,80 @@
+# ============================================================
+# FinTrack App — Root .gitignore
+# ============================================================
+
+# ------------------------------------------------------------
+# SECRETS & ENVIRONMENT — NEVER COMMIT THESE
+# ------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+*.pfx
+
+# ------------------------------------------------------------
+# MYSQL DATA — Lives in Docker volume, never in Git
+# ------------------------------------------------------------
+mysql_data/
+/data/
+*.sql.gz
+*.dump
+
+# ------------------------------------------------------------
+# DOCKER RUNTIME
+# ------------------------------------------------------------
+docker-compose.override.yml
+
+# ------------------------------------------------------------
+# OS FILES
+# ------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*~
+
+# ------------------------------------------------------------
+# IDE & EDITOR FILES
+# ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.phpintel
+
+# ------------------------------------------------------------
+# LOGS & TEMP FILES
+# ------------------------------------------------------------
+*.log
+/tmp/
+
+# ------------------------------------------------------------
+# BACKEND (CodeIgniter 4 / PHP)
+# ------------------------------------------------------------
+backend/vendor/
+backend/writable/cache/*
+backend/writable/logs/*
+backend/writable/session/*
+backend/writable/uploads/*
+backend/writable/debugbar/*
+backend/phpunit
+backend/tests/coverage*
+backend/.env
+backend/php_errors.log
+
+# ------------------------------------------------------------
+# FRONTEND (Vite / Node)
+# ------------------------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/npm-debug.log*
+frontend/yarn-error.log*

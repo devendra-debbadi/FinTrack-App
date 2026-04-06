@@ -1,0 +1,55 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: fintrack-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-fintrack_root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-fintrack_app}
+      MYSQL_USER: ${MYSQL_USER:-fintrack}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-fintrack_pass}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fintrack-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      CI_ENVIRONMENT: production
+      database_default_hostname: mysql
+      database_default_database: ${MYSQL_DATABASE:-fintrack_app}
+      database_default_username: ${MYSQL_USER:-fintrack}
+      database_default_password: ${MYSQL_PASSWORD:-fintrack_pass}
+      database_default_DBDriver: MySQLi
+      database_default_port: 3306
+      jwt_secretKey: ${JWT_SECRET:-FinTrack_S3cur3_JWT_K3y_2026_Ch4ng3_Th1s_1n_Pr0d}
+      cors_allowedOrigins: ${CORS_ALLOWED_ORIGINS:-http://localhost}
+    ports:
+      - "8081:80"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: fintrack-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  mysql_data:
