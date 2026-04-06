@@ -103,6 +103,12 @@ database.default.port = 3306
 
 If you created a dedicated user, use those credentials instead of root.
 
+Also set a strong JWT secret (generate with `openssl rand -hex 32`):
+
+```env
+jwt.secretKey = 'your-generated-64-char-secret-here'
+```
+
 ---
 
 ## Step 2: Backend Setup
@@ -113,7 +119,7 @@ cd backend
 # Install PHP dependencies
 composer install
 
-# Run database migrations (creates all 14 tables)
+# Run database migrations (creates all 16 tables)
 php spark migrate
 
 # Seed default data (admin user + 22 default categories)

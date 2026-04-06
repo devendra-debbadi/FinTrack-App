@@ -292,7 +292,7 @@ After reset, login with: `admin@fintrack.app` / `Admin@1234`
 All Docker configuration is managed through **one file**: the root `.env` file.
 
 ```bash
-# Copy the template (optional — defaults work out of the box)
+# Copy the template
 cp .env.example .env
 ```
 
@@ -304,6 +304,30 @@ MYSQL_USER=fintrack
 MYSQL_PASSWORD=fintrack_pass
 JWT_SECRET=your-secret-here  # generate: openssl rand -hex 32
 CORS_ALLOWED_ORIGINS=http://localhost
+```
+
+### Security — JWT Secret (Required Before Production)
+
+The `.env.example` ships with a placeholder for `JWT_SECRET`. You **must** replace it with a real secret before exposing the app to the internet or sharing access.
+
+Generate one with:
+
+```bash
+openssl rand -hex 32
+```
+
+Paste the output into your root `.env`:
+
+```env
+JWT_SECRET=REDACTED_JWT_SECRET
+```
+
+> **Why this matters:** The JWT secret signs authentication tokens. If someone knows your secret, they can forge tokens and bypass login entirely. The placeholder is intentionally obvious — replace it before going live.
+
+**For local development only** (without Docker), set the same secret in `backend/.env`:
+
+```env
+jwt.secretKey = 'your-generated-secret-here'
 ```
 
 **How it works:**
