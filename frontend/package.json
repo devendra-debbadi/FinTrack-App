@@ -11,21 +11,21 @@
   "dependencies": {
     "@primevue/themes": "^4.5.4",
     "@vueuse/core": "^14.2.1",
-    "axios": "^1.14.0",
+    "axios": "^1.15.0",
     "echarts": "^6.0.0",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
     "pinia": "^3.0.4",
     "primeicons": "^7.0.0",
-    "primevue": "^4.5.4",
-    "vue": "^3.5.30",
+    "primevue": "^4.5.5",
+    "vue": "^3.5.32",
     "vue-echarts": "^8.0.1",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
-    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-vue": "^6.0.6",
     "tailwindcss": "^4.2.2",
-    "vite": "^8.0.1"
+    "vite": "^8.0.8"
   }
 }
